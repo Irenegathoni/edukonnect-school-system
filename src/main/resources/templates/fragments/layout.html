@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle} + 'EduKonnect'">EduKonnect</title>
+
+    <!--AdminLTE CSS -self-hosted locally, not loaded from AdminLTE's servers -->
+    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}"/>
+    <style>
+        :root{
+            --edukonnect-navy:#1E3A5F;
+            --edukonnect-teal:#14B8A6;
+        }
+        .app-sidebar{
+            background-color:var(--edukonnect-navy) !important;
+        }
+        .app-sidebar .nav-link.active{
+            background-color: var(--edukonnect-teal) !important;
+            color: #fff !important;
+        }
+        .app-sidebar.nav-link{
+            color:rgb(255,255,255,0.85) !important;
+        }
+        .btn-primary{
+            background-color:var(--edukonnect-teal) !important;
+            border-color:var(--edukonnect-teal) !important;
+        }
+    </style>
+</head>
+
+<body class="layout-fixed sidebar-expand-lg">
+<div class="app-wrapper">
+    <!--Top header-->
+    <nav class="app-header navbar-expand bg-body">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-Ite-toggle="sidebar" href="#" role="button">
+                        Menu
+                    </a>
+                </li>
+            </ul>
+            <span class="navbar-text fw-semibold" th:text="${pageTitle}">Page Title</span>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" data-bs-theme="dark">
+        <div class="sidebar-brand">
+            <a href="#" class="brand-link text-white fw-bold px-3 py-3 d-block">EduKonnect</a>
+        </div>
+        <div class="sidebar-wrapper">
+            <nav class="mt-2">
+                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview">
+                    <li class="nav-item">
+                        <a th:href="@{/dashboard}"
+                           th:classappend="${activePage == 'dashboard'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/students}"
+                           th:classappend="${activePage == 'students'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Students</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/guardians}"
+                           th:classappend="${activePage == 'guardians'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Guardians</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/classrooms}"
+                           th:classappend="${activePage == 'classrooms'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Classrooms</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/teachers}"
+                           th:classappend="${activePage == 'teachers'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Teachers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/attendance}"
+                           th:classappend="${activePage == 'attendance'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Attendance</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/exam-results}"
+                           th:classappend="${activePage == 'exam-results'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Exam results</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/fees}"
+                           th:classappend="${activePage == 'fees'} ? 'active' : ''"
+                           class="nav-link">
+                            <span>Fees &amp; payments</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main content: every page injects itself here -->
+    <main class="app-main">
+        <div class="app-content">
+            <div class="container-fluid">
+                <div th:replace="${content}">
+                    <!-- page-specific content goes here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<!-- AdminLTE JS - self-hosted locally -->
+<script th:src="@{/js/adminlte.min.js}"></script>
+
+</body>
+</html>
